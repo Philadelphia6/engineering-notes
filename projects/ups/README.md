@@ -14,4 +14,6 @@
 - [学习专题 004：八个UPS设计学习点](NOTE-0002-ups-learning-record.md#study-004)
 - [参考原理图与PDF入口](NOTE-0002-ups-learning-record.md#schematic)
 
-图片及完整原理图保留在飞书中，需相应访问权限。GitHub 版保留公式、加粗、已确认结果和待验证事项。
+9 张图片与完整 PDF 已上传到本仓库的 [assets](assets/) 目录，可直接查阅。
+
+[打开完整原理图 PDF](assets/UPS-schematic-C25285.pdf)GitHub 版保留公式、加粗、已确认结果和待验证事项。

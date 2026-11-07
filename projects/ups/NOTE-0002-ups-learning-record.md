@@ -9,7 +9,7 @@
 | 状态 | 原理分析及部分实测已确认；具体根因与修复验证见各节 |
 | 来源 | [飞书 UPS学习记录](https://scnv916iljvi.feishu.cn/docx/SryQdclcDoecoTx0dJ6cBl5PnQc)，版本 43 |
 
-正文由飞书原文同步，仅调整 GitHub Markdown 格式与导航。图片和 PDF 保留为飞书访问入口；GitHub 不显示原文的彩色文字，以加粗和文字标签突出重点。
+正文由飞书原文同步，仅调整 GitHub Markdown 格式与导航。图片和 PDF 已归档到本仓库，可直接查阅；GitHub 不显示原文的彩色文字，以加粗和文字标签突出重点。
 
 ### 阅读导航
 
@@ -47,7 +47,7 @@
 | 中间 B | Q203、Q204 | PFC 与逆变共用桥臂 |
 | 右侧 C | Q201、Q202 | 逆变专用桥臂 |
 
-[查看图片：三桥臂连接示意图](https://feishu.cn/file/SH57bAvfboC8LWxMicjcGJ2rnNc)（飞书素材，需相应访问权限）
+![三桥臂连接示意图](assets/topology.png)
 
 图 1  三桥臂功能连接示意。B 为公共交流回流端，不是直流负母线。
 
@@ -55,7 +55,7 @@
 
 来源：U.PSDR.L.CT3K C25285.pdf，第 2 页顶部 Power supply distributor 功率电路。以下结论针对图示连接；继电器在不同模式下的状态仍应结合控制逻辑核对。
 
-[查看图片：原理图共用桥臂局部](https://feishu.cn/file/VGBKbdUKAoPcAsx8Q7GcR690n4c)（飞书素材，需相应访问权限）
+![原理图共用桥臂局部](assets/shared-leg.png)
 
 图 2  原理图桥臂局部。左侧为 PFC 桥臂，中间为共用桥臂，右侧为逆变输出桥臂。
 
@@ -119,11 +119,11 @@ PFC 利用 vAB 与输入交流电压之间的差值调节电感电流；逆变�
 
 结论：两处参考承担不同作用。**前级 +5 V 调整两路采样网络的工作电位**，其共同贡献在理想匹配的差分电路中抵消；**后级 +1.625 VA 设定输出零点**，使交流采样信号适配 MCU ADC。前级上拉是否为本板正常工作的必要条件，仍需核查供电、器件规格及全工况电压。
 
-[查看图片：市电前级采样电路](https://feishu.cn/file/FWE4bDkg6otgLox4PxQcBUf9nvf)（飞书素材，需相应访问权限）
+![市电前级采样电路](assets/sampling-front.png)
 
 图 3  市电前级采样。R7007、R7008 接 +5 V；圈出的 R7014、R7021 属于高压串联电阻链。
 
-[查看图片：带参考电压的差分放大电路](https://feishu.cn/file/BWc8bdjJCoXX9VxvaRjcduVknyg)（飞书素材，需相应访问权限）
+![带参考电压的差分放大电路](assets/sampling-difference.png)
 
 图 4  带 +1.625 VA 参考的差分放大电路。R7013、C7003 用于输出 RC 滤波，D7001 用于电源轨钳位保护。
 
@@ -204,7 +204,7 @@ Texas Instruments  Op Amp Voltage Ranges—input and output, clearing some confu
 - 示波器照片：黄色 CH1 为 VCC-IC，绿色 CH2 为 14 V 输出；下半屏 Zoom1 为放大显示。照片中的 14 V 输出仅出现短脉冲，未显示持续建立。
 - 需要区分：照片本身没有同时显示 VCC-SPS2，其同步跌落来自用户补充实测。VCC-IC 不是从原先稳定的 19 V 跌落，而是从无电压开始启动。
 
-[查看图片：图 5 按键后的启动波形，黄色为 VCC-IC，绿色为 14 V 输出](https://feishu.cn/file/OnT6bggXToJpLMxftF5cAQwknCc)（飞书素材，需相应访问权限）
+![图 5 按键后的启动波形，黄色为 VCC-IC，绿色为 14 V 输出](assets/vcc-startup-waveform.jpg)
 
 ### 结论
 
@@ -218,7 +218,7 @@ Q608 所在启动供电支路 → VCC-SPS2 → Q605 控制开关 → VCC-IC → 
 
 Q605 由 VCC-CON 经其周围电阻、电容网络控制。判断供电能力时，既要考虑 U602 本身，也要考虑 VCC-IC 上连接的其他支路。
 
-[查看图片：图 6 SPS-2 局部，包含启动供电、Q605 与 VCC-IC 相关回路](https://feishu.cn/file/Yof4bexgBouUjnx8c7lcJVtjnZg)（飞书素材，需相应访问权限）
+![图 6 SPS-2 局部，包含启动供电、Q605 与 VCC-IC 相关回路](assets/sps2-vcc.png)
 
 ### 跌落后为什么缓慢恢复
 
@@ -298,7 +298,7 @@ Q605 由 VCC-CON 经其周围电阻、电容网络控制。判断供电能力时
 
 值得借鉴：按电气域绘制信号和供电框图，同时核查隔离器额定值、PCB 间距、寄生耦合及上电时序。**不能因为网络名含有 GND，就将不同参考点直接连接**。
 
-[查看图片：图 7 驱动电路局部，左侧为自举半桥驱动，右侧为电池侧隔离驱动](https://feishu.cn/file/K6VHbTBQ9ovPG7xscNIcY3OMnKh)（飞书素材，需相应访问权限）
+![图 7 驱动电路局部，左侧为自举半桥驱动，右侧为电池侧隔离驱动](assets/drivers.png)
 
 ### 电流控制与硬件过流保护分工
 
@@ -308,7 +308,7 @@ Q605 由 VCC-CON 经其周围电阻、电容网络控制。判断供电能力时
 
 **有比较器不等于保护闭环已经完整实现**。需要核查阈值、极性、滤波、传播延迟、控制器配置、故障锁存与恢复策略。滤波过重可能延迟保护，过轻则可能误触发；**具体动作需结合固件和实测确认**。
 
-[查看图片：图 8 LIMIT CURRENT PROTECT 局部，展示比较器输出和 FAULT 信号接口](https://feishu.cn/file/DuZ9b5LAzoh66Qxjkn1ceNV7nTb)（飞书素材，需相应访问权限）
+![图 8 LIMIT CURRENT PROTECT 局部，展示比较器输出和 FAULT 信号接口](assets/protection.png)
 
 ### 漏感尖峰吸收要同时考虑应力与损耗
 
@@ -342,7 +342,7 @@ Q605 由 VCC-CON 经其周围电阻、电容网络控制。判断供电能力时
 
 调试时不仅比较控制 PWM，还要比较实际栅极波形和两半周电流，检查死区、驱动延迟、初级伏秒及并联管电流分配。并联器件还要结合 PCB 电流回路、栅极回路和散热条件判断，不能仅凭型号相同认定均流。
 
-[查看图片：图 9 电池侧推挽功率级与后级桥式电路局部](https://feishu.cn/file/Lho6b62mno1qv1xM3dZcFjg8nmd)（飞书素材，需相应访问权限）
+![图 9 电池侧推挽功率级与后级桥式电路局部](assets/battery-power.png)
 
 ### 记录边界
 
@@ -352,6 +352,6 @@ Q605 由 VCC-CON 经其周围电阻、电容网络控制。判断供电能力时
 
 ## 参考原理图
 
-原始文件：U.PSDR.L.CT3K C25285.pdf，共 2 页。完整 PDF 见下方飞书原文附件链接，便于放大查阅器件与跨页网络标号；正文局部截图用于辅助讲解。
+原始文件：U.PSDR.L.CT3K C25285.pdf，共 2 页。完整 PDF 见下方仓库内附件链接，便于放大查阅器件与跨页网络标号；正文局部截图用于辅助讲解。
 
-[查看完整 PDF 原理图（飞书原文附件）](https://scnv916iljvi.feishu.cn/docx/SryQdclcDoecoTx0dJ6cBl5PnQc#doxcnibvS3GYC6Ruhdy5MS6UAbN)
+[查看或下载完整 PDF 原理图](assets/UPS-schematic-C25285.pdf)
