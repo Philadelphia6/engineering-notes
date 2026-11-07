@@ -7,10 +7,12 @@
 | 编号 | 日期 | 项目 | 问题 | 状态 |
 | --- | --- | --- | --- | --- |
 | NOTE-0001 | 2026-11-07 | 半桥 LLC / TMS320F28035 | [比较器和运放的供电、输入共模范围与输出电源轨](projects/llc/NOTE-0001-common-mode-and-power-rails.md) | 数据手册已核对；方案待硬件验证 |
+| NOTE-0002 | 2026-11-07 | UPS / U.PSDR.L.CT3K C25285 | [UPS学习记录：共用桥臂、采样偏置、启动跌落及设计学习点](projects/ups/NOTE-0002-ups-learning-record.md) | 原理及部分实测已确认；其余待验证 |
 
 ## 按项目查阅
 
 - [半桥 LLC / TMS320F28035](projects/llc/README.md)
+- [UPS](projects/ups/README.md)
 
 ## 新增记录
 
